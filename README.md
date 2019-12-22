@@ -1,6 +1,6 @@
 # k8sbook-sandbox
 
-## Prerequisites
+## Local cluster on Windows
 
 * On Windows: Enable Hyper V in Windows Features
 * Install kubectl
@@ -15,13 +15,23 @@
     minikube ip # 172.17.246.214
     minikube stop
 
+## Cluster managed by DigitalOcean
+
+    * create cluster at https://cloud.digitalocean.com/kubernetes/clusters
+    * record ip # 
+    * download cluster config file
+    * set `KUBECONFIG` to `<config-path-1>;<config-path-2>;...`
+    * TODO: https
+
 ## Getting started
 
-    kubectl config use-context minikube     # Specify which cluster to use
-    kubectl apply -f hello.deploy.yml       # Deploy application
-    kubectl apply -f hello.svc.yml          # Deploy service
-    open http://172.17.246.214:30001/       # Access application through service
-    kubectl delete -f hello.svc.yml         # Clean-up
+    kubectl config view    
+    kubectl config use-context minikube         # Specify which cluster to use
+    kubectl apply -f hello.deploy.yml           # Deploy application
+    kubectl apply -f hello.svc.yml              # Deploy service
+    kubectl rollout status deploy hello-deploy  # Wait for rollout
+    open http://172.17.246.214:30001/           # Access application through service
+    kubectl delete -f hello.svc.yml             # Clean-up
     kybectl delete -f hello.pod.yml
 
 ## Contexts
@@ -66,3 +76,5 @@
 ## Services
 
     kubectl apply -f hello.svc.yml
+    kubectl get service hello-svc
+    kubectl describe service hello-svc
