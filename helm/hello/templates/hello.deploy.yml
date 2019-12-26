@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-deploy
+  name: {{ .Release.Name }}-deploy
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: hello-world
+      app: {{ .Release.Name }}-world
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -16,10 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        app: hello-world
+        app: {{ .Release.Name }}-world
     spec:
       containers:
-      - name: hello-pod
-        image: nigelpoulton/k8sbook:edge
+      - name: {{ .Release.Name }}-pod
+        image: {{ .Values.image }}
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.containerPort }}

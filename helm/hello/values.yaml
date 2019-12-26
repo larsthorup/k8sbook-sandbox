@@ -1,0 +1,11 @@
+# image is the image name to install on the pod
+image: nigelpoulton/k8sbook:latest
+
+# containerPort is the port the executable must listen on
+containerPort: 8080
+
+# localPort is the port used to access the application when deployed locally
+localPort: 30001
+
+# publicPort is the port used to access the application when deployed in the cloud
+publicPort: 80
