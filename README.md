@@ -15,6 +15,8 @@
     minikube start --vm-driver=hyperv
     minikube status
     minikube ip # 172.17.246.214
+    minikube dashboard
+    minikube tunnel # exposes nodePort externally
     minikube stop
 
 ## Cluster managed by DigitalOcean
@@ -60,6 +62,7 @@
     kubectl get pods -o json
     kubectl describe pod/hello-pod
     kubectl logs pod/hello-pod
+    kubectl logs pod/hello-pod -c hello-ctr
     kubectl exec pod/hello-pod ps aux
     kubectl exec -it pod/hello-pod sh       # in cmd.exe
     
